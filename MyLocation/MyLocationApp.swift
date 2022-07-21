@@ -16,25 +16,49 @@ var count: CGFloat {
 
 @main
 struct MyLocationApp: App {
-    @ObservedObject var locationStore = LocationStore(
-        dependency: LocationStoreDependency(
-            updateLocation: {
-                CLLocation(latitude: count, longitude: count)
-            }
+    @ObservedObject var store: Store<LocationStoreKey, Void, Void>
+    @ObservedObject var locationStore: Store<LocationStoreKey, LocationStoreAction, LocationStoreDependency>
+    
+    init() {
+        let store = Store<LocationStoreKey, Void, Void>(initialValues: [:], actionHandler: .none, dependency: ())
+        self._store = ObservedObject(
+            wrappedValue: store
         )
-    ).debug
+        self._locationStore = ObservedObject(
+            wrappedValue: store.scope(
+                keyTransformation: (
+                    from: { $0 },
+                    to: { $0 }
+                ),
+                actionHandler: locationStoreActionHandler(),
+                dependencyTransformation: {
+                    .init {
+                        CLLocation(latitude: count, longitude: count)
+                    }
+                }
+            )
+            .debug
+        )
+    }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(
-                store: locationStore.actionlessScope(
-                    keyTransformation: (
-                        from: { $0 },
-                        to: { $0 }
-                    ),
-                    dependencyTransformation: { _ in () }
+            VStack {
+                ContentView(
+                    store: store.actionlessScope(
+                        keyTransformation: (
+                            from: { $0 },
+                            to: { $0 }
+                        )
+                    )
                 )
-            )
+                Button("Update") {
+                    locationStore.handle(action: .updateLocation)
+                }
+            }
+            .onAppear {
+                locationStore.handle(action: .updateLocation)
+            }
         }
     }
 }
