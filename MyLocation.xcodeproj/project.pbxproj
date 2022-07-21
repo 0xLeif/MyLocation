@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29263AFE2888D93400B6899A /* LocationCacheStore in Frameworks */ = {isa = PBXBuildFile; productRef = 29263AFD2888D93400B6899A /* LocationCacheStore */; };
 		29F286B32888D3D40058F023 /* MyLocationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F286B22888D3D40058F023 /* MyLocationApp.swift */; };
 		29F286B52888D3D40058F023 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F286B42888D3D40058F023 /* ContentView.swift */; };
 		29F286B72888D3D50058F023 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F286B62888D3D50058F023 /* Assets.xcassets */; };
@@ -26,17 +27,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29263AFE2888D93400B6899A /* LocationCacheStore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29263AFC2888D93400B6899A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		29F286A62888D3D40058F023 = {
 			isa = PBXGroup;
 			children = (
 				29F286B12888D3D40058F023 /* MyLocation */,
 				29F286B02888D3D40058F023 /* Products */,
+				29263AFC2888D93400B6899A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +93,9 @@
 			dependencies = (
 			);
 			name = MyLocation;
+			packageProductDependencies = (
+				29263AFD2888D93400B6899A /* LocationCacheStore */,
+			);
 			productName = MyLocation;
 			productReference = 29F286AF2888D3D40058F023 /* MyLocation.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +124,9 @@
 				Base,
 			);
 			mainGroup = 29F286A62888D3D40058F023;
+			packageReferences = (
+				29263AFB2888D8ED00B6899A /* XCRemoteSwiftPackageReference "LocationCacheStore" */,
+			);
 			productRefGroup = 29F286B02888D3D40058F023 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,6 +285,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyLocation/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Please";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -297,6 +314,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MyLocation/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Location Please";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -337,6 +355,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		29263AFB2888D8ED00B6899A /* XCRemoteSwiftPackageReference "LocationCacheStore" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0xLeif/LocationCacheStore";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		29263AFD2888D93400B6899A /* LocationCacheStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 29263AFB2888D8ED00B6899A /* XCRemoteSwiftPackageReference "LocationCacheStore" */;
+			productName = LocationCacheStore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 29F286A72888D3D40058F023 /* Project object */;
 }
